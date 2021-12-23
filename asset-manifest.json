@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Education-tasting-react/static/css/main.ea1455b2.chunk.css",
-    "main.js": "/Education-tasting-react/static/js/main.1579c64a.chunk.js",
-    "main.js.map": "/Education-tasting-react/static/js/main.1579c64a.chunk.js.map",
+    "main.css": "/Education-tasting-react/static/css/main.94051f56.chunk.css",
+    "main.js": "/Education-tasting-react/static/js/main.67a10a42.chunk.js",
+    "main.js.map": "/Education-tasting-react/static/js/main.67a10a42.chunk.js.map",
     "runtime-main.js": "/Education-tasting-react/static/js/runtime-main.71abcff5.js",
     "runtime-main.js.map": "/Education-tasting-react/static/js/runtime-main.71abcff5.js.map",
-    "static/js/2.1f076416.chunk.js": "/Education-tasting-react/static/js/2.1f076416.chunk.js",
-    "static/js/2.1f076416.chunk.js.map": "/Education-tasting-react/static/js/2.1f076416.chunk.js.map",
+    "static/js/2.d8a44dd6.chunk.js": "/Education-tasting-react/static/js/2.d8a44dd6.chunk.js",
+    "static/js/2.d8a44dd6.chunk.js.map": "/Education-tasting-react/static/js/2.d8a44dd6.chunk.js.map",
     "index.html": "/Education-tasting-react/index.html",
-    "static/css/main.ea1455b2.chunk.css.map": "/Education-tasting-react/static/css/main.ea1455b2.chunk.css.map",
-    "static/js/2.1f076416.chunk.js.LICENSE.txt": "/Education-tasting-react/static/js/2.1f076416.chunk.js.LICENSE.txt"
+    "static/css/main.94051f56.chunk.css.map": "/Education-tasting-react/static/css/main.94051f56.chunk.css.map",
+    "static/js/2.d8a44dd6.chunk.js.LICENSE.txt": "/Education-tasting-react/static/js/2.d8a44dd6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.71abcff5.js",
-    "static/js/2.1f076416.chunk.js",
-    "static/css/main.ea1455b2.chunk.css",
-    "static/js/main.1579c64a.chunk.js"
+    "static/js/2.d8a44dd6.chunk.js",
+    "static/css/main.94051f56.chunk.css",
+    "static/js/main.67a10a42.chunk.js"
   ]
 }
