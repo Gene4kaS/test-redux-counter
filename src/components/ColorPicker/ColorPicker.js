@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './ColorPicker.css';
 
-class ColorPicker extends Component {
+class ColorPicker extends PureComponent {
   state = {
     activeOptionIdx: 0,
   };
@@ -15,14 +15,6 @@ class ColorPicker extends Component {
     return classNames('ColorPicker__option', {
       'ColorPicker__option--active': index === this.state.activeOptionIdx,
     });
-
-    // const optionClasses = ['ColorPicker__option'];
-
-    // if (index === this.state.activeOptionIdx) {
-    //   optionClasses.push('ColorPicker__option--active');
-    // }
-
-    // return optionClasses.join(' ');
   };
 
   render() {

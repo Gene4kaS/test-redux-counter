@@ -7,21 +7,48 @@ import TodoList from './components/TodoList';
 import initialTodos from './todos.json';
 import TodoEditor from './components/TodoEditor';
 import Filter from './components/Filter';
+import Modal from './components/Modal';
+import IconButton from './components/IconButton';
+import { ReactComponent as AddIcon } from './icons/add.svg';
 
-const colorPickerOptions = [
-  { label: 'red', color: '#F44336' },
-  { label: 'green', color: '#4CAF50' },
-  { label: 'blue', color: '#2196F3' },
-  { label: 'grey', color: '#607D8B' },
-  { label: 'pink', color: '#E91E63' },
-  { label: 'indigo', color: '#3F51B5' },
-];
+// import Tabs from './components/Tabs';
+// import tabs from './tabs.json';
+// import Clock from './components/Clock';
+
+// const colorPickerOptions = [
+//   { label: 'red', color: '#F44336' },
+//   { label: 'green', color: '#4CAF50' },
+//   { label: 'blue', color: '#2196F3' },
+//   { label: 'grey', color: '#607D8B' },
+//   { label: 'pink', color: '#E91E63' },
+//   { label: 'indigo', color: '#3F51B5' },
+// ];
 
 class App extends Component {
   state = {
-    todos: initialTodos,
+    todos: [],
     filter: '',
+    showModal: false,
   };
+
+  componentDidMount() {
+    const todos = localStorage.getItem('todos');
+    const parsedTodos = JSON.parse(todos);
+    if (parsedTodos) {
+      this.setState({ todos: parsedTodos });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const nextTodos = this.state.todos;
+    const prevTodos = prevState.todos;
+    if (nextTodos !== prevTodos) {
+      localStorage.setItem('todos', JSON.stringify(nextTodos));
+    }
+    if (nextTodos.length > prevTodos.length && prevTodos.length !== 0) {
+      this.toggleModal();
+    }
+  }
 
   addTodo = text => {
     const todo = {
@@ -32,6 +59,7 @@ class App extends Component {
     this.setState(({ todos }) => ({
       todos: [todo, ...todos],
     }));
+    // this.toggleModal();
   };
 
   deleteTodo = todoId => {
@@ -41,19 +69,6 @@ class App extends Component {
   };
 
   toggleCompleted = todoId => {
-    //   this.setState(prevState => ({
-    //     todos: prevState.todos.map(todo => {
-    //       if (todo.id === todoId) {
-    //         return {
-    //           ...todo,
-    //           completed: !todo.completed,
-    //         };
-    //       }
-    //       return todo;
-    //     }),
-    //   }));
-    // };
-
     this.setState(({ todos }) => ({
       todos: todos.map(todo =>
         todo.id === todoId ? { ...todo, completed: !todo.completed } : todo,
@@ -83,24 +98,40 @@ class App extends Component {
     );
   };
 
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+
   render() {
-    const { todos, filter } = this.state;
+    const { todos, filter, showModal } = this.state;
     const totalTodoCount = todos.length;
     const visibleTodos = this.getVisibleTodos();
     const completedTodoCount = this.calculateCompletedTodos();
 
     return (
       <>
-        <h1>Состояние компонента</h1>
+        <IconButton onClick={this.toggleModal} aria-label="Добавить Todo">
+          <AddIcon width="40" height="40" fill="#ffffff" />
+        </IconButton>
+        {showModal && (
+          <Modal onClose={this.toggleModal}>
+            <TodoEditor onSubmit={this.addTodo} />
+          </Modal>
+        )}
+
+        {/* <Tabs items={tabs} /> */}
+
+        {/* <h1>Состояние компонента</h1>
         <Counter initialValue={10} />
         <Dropdown />
-        <ColorPicker options={colorPickerOptions} />
+        <ColorPicker options={colorPickerOptions} /> */}
         <div>
           <p>Общее кол-во: {totalTodoCount}</p>
           <p>Кол-во выполненных: {completedTodoCount}</p>
         </div>
 
-        <TodoEditor onSubmit={this.addTodo} />
         <Filter value={filter} onChange={this.changeFilter} />
 
         <TodoList
