@@ -1,14 +1,14 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import CounterView from './views/CounterView';
 
 const App = () => (
   <>
-    {/* <ul>
+    <ul>
       <li>
         <Link to="/counter">Счётчик</Link>
       </li>
-    </ul> */}
+    </ul>
     <Switch>
       <Route path="/counter">
         <CounterView />
