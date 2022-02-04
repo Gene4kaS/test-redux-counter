@@ -1,9 +1,9 @@
 import React from 'react';
-import Controls from './Controls';
 import { connect } from 'react-redux';
-import './Counter.css';
+import Controls from './Controls';
 import Value from './Value';
 import * as actions from '../../redux/counter/counter-actions';
+import './Counter.css';
 
 function Counter({ value, step, onIncrement, onDecrement }) {
   return (
@@ -14,14 +14,13 @@ function Counter({ value, step, onIncrement, onDecrement }) {
         onIncrement={() => onIncrement(step)}
         onDecrement={() => onDecrement(step)}
       />
-      Counter
     </div>
   );
 }
 
 const mapStateToProps = state => ({
+  value: state.counter.value,
   step: state.counter.step,
-  value: state.counter.state,
 });
 
 const mapDispatchToProps = dispatch => ({
